@@ -27,8 +27,8 @@ node{
       
     stage('Run Docker Image'){
             def dockerContainerName = 'javadockerapp_$JOB_NAME_$BUILD_NUMBER'
-            def changingPermission='sudo chmod +x stopscript.sh'
-            def scriptRunner='sudo ./stopscript.sh'           
+            def changingPermission='sudo chmod +x /home/ubuntu/stopscript.sh'
+            def scriptRunner='sudo sh /home/ubuntu/stopscript.sh'           
             def dockerRun= "sudo docker run -p 8082:8080 -d --name ${dockerContainerName} ${dockerImageName}" 
             withCredentials([string(credentialsId: 'deploymentserverpwd', variable: 'dpPWD')]) {
                   sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no root@3.16.129.250" 
