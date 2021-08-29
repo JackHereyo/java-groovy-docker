@@ -1,7 +1,7 @@
 node{
-      def dockerImageName= 'rajnikhattarrsinha/javadedockerapp_$JOB_NAME:$BUILD_NUMBER'
+      def dockerImageName= 'JackHereyo/javadedockerapp_$JOB_NAME:$BUILD_NUMBER'
       stage('SCM Checkout'){
-         git 'https://github.com/LovesCloud/java-groovy-docker'
+         git 'https://github.com/JackHereyo/java-groovy-docker'
       }
       stage('Build'){
          // Get maven home path and build
@@ -19,8 +19,8 @@ node{
       }  
    
       stage('Publish Docker Image'){
-         withCredentials([string(credentialsId: 'dockerpwd', variable: 'dockerPWD')]) {
-              sh "docker login -u rajnikhattarrsinha -p ${dockerPWD}"
+         withCredentials([string(credentialsId: 'Jack', variable: 'dockerPWD')]) {
+              sh "docker login -u sourav1902s -p ${dockerPWD}"
          }
         sh "docker push ${dockerImageName}"
       }
@@ -33,9 +33,9 @@ node{
             withCredentials([string(credentialsId: 'deploymentserverpwd', variable: 'dpPWD')]) {
                   sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no devops@52.76.172.196" 
                   sh "sshpass -p ${dpPWD} scp -r stopscript.sh devops@52.76.172.196:/home/devops" 
-                  sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no devops@52.76.172.196 ${changingPermission}"
-                  sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no devops@52.76.172.196 ${scriptRunner}"
-                  sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no devops@52.76.172.196 ${dockerRun}"
+                  sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no root@3.144.85.228 ${changingPermission}"
+                  sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no root@3.144.85.228 ${scriptRunner}"
+                  sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no root@3.144.85.228 ${dockerRun}"
             }
             
       
