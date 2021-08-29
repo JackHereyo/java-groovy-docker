@@ -4,7 +4,7 @@
   <groupId>com.example</groupId>
   <!--<artifactId>java-tomcat-maven-example</artifactId>-->
  <artifactId>java-tomcat-maven-example</artifactId>
-  <packaging>war</packaging>
+  <packaging>warda</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>CICD Pipeline View</name>
   <url>http://maven.apache.org</url>  
