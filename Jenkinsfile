@@ -1,5 +1,5 @@
 node{
-      def dockerImageName= 'JackHereyo/javadedockerapp_jack:$BUILD_NUMBER'
+      def dockerImageName= 'sourav1902sy/javadedockerapp_jack:$BUILD_NUMBER'
       stage('SCM Checkout'){
          git 'https://github.com/JackHereyo/java-groovy-docker'
       }
